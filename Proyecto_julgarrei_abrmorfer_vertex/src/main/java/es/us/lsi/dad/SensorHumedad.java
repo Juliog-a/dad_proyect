@@ -11,10 +11,12 @@ public class SensorHumedad {
 	private Float temperatura;
 	
 	public SensorHumedad(int id, Integer nPlaca, long timestamp, float humedad, float temperatura) {
-		super();	
-		timestamp=Calendar.getInstance().getTimeInMillis();
-		humedad=0.0f;
-		temperatura= 0.0f;
+		super();
+		this.id=id;
+		this.nPlaca=nPlaca;
+		this.timestamp=timestamp;
+		this.humedad=humedad;
+		this.temperatura=temperatura;
 	}
 	public SensorHumedad() {
 		super();	

@@ -4,39 +4,42 @@ import java.util.Calendar;
 import java.util.Objects;
 
 public class Actuador_rele {
-	private Integer id;
-	private boolean encendido;
-	private long timestamp;
-	private Integer nPlaca;
+	
+	protected Integer nPlaca; // clave priamaria
+	protected Integer idActuador; 
+	protected long timestamp;  //Calendar.getInstance().getTimeInMillis()
+	protected boolean activo;
+	protected boolean encendido;
 	
 	public Actuador_rele() {
-		super();
+		super();	
 		timestamp=Calendar.getInstance().getTimeInMillis();
-		encendido=false;
+		activo=false;
 	}
 	
-	public Actuador_rele(long timestamp, boolean encendido, Integer id, Integer nPlaca) {
-	super();
-	this.id= id;
-	this.timestamp=timestamp;
-	this.encendido=encendido;
-	this.nPlaca=nPlaca;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public boolean isEncendido() {
-		return encendido;
-	}
-
-	public void setEncendido(boolean encendido) {
+	public Actuador_rele(Integer idDevise, Integer idActuador, long timestamp, boolean activo, boolean encendido) {
+		super();
+		this.nPlaca = idDevise;
+		this.idActuador = idActuador;
+		this.timestamp = timestamp;
+		this.activo = activo;
 		this.encendido = encendido;
+	}
+
+	public Integer getIdDevise() {
+		return nPlaca;
+	}
+
+	public void setIdDevise(Integer idDevise) {
+		this.nPlaca = idDevise;
+	}
+
+	public Integer getidActuador() {
+		return idActuador;
+	}
+
+	public void setidActuador(Integer idActuador) {
+		this.idActuador = idActuador;
 	}
 
 	public long getTimestamp() {
@@ -47,17 +50,25 @@ public class Actuador_rele {
 		this.timestamp = timestamp;
 	}
 
-	public Integer getnPlaca() {
-		return nPlaca;
+	public boolean getActivo() {
+		return activo;
 	}
 
-	public void setnPlaca(Integer nPlaca) {
-		this.nPlaca = nPlaca;
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public boolean getEncendido() {
+		return encendido;
+	}
+
+	public void setEncendido(boolean encendido) {
+		this.encendido = encendido;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(encendido, id, nPlaca, timestamp);
+		return Objects.hash(activo, encendido, nPlaca, idActuador, timestamp);
 	}
 
 	@Override
@@ -69,16 +80,16 @@ public class Actuador_rele {
 		if (getClass() != obj.getClass())
 			return false;
 		Actuador_rele other = (Actuador_rele) obj;
-		return encendido == other.encendido && Objects.equals(id, other.id) && Objects.equals(nPlaca, other.nPlaca)
-				&& timestamp == other.timestamp;
+		return activo == other.activo && encendido == other.encendido && Objects.equals(nPlaca, other.nPlaca)
+				&& Objects.equals(idActuador, other.idActuador) && timestamp == other.timestamp;
 	}
 
 	@Override
 	public String toString() {
-		return "Actuador_rele [id=" + id + ", encendido=" + encendido + ", timestamp=" + timestamp + ", nPlaca="
-				+ nPlaca + ", getId()=" + getId() + ", isEncendido()=" + isEncendido() + ", getTimestamp()="
-				+ getTimestamp() + ", getnPlaca()=" + getnPlaca() + ", hashCode()=" + hashCode() + ", getClass()="
-				+ getClass() + ", toString()=" + super.toString() + "]";
+		return "Actuador_Entity [idDevise=" + nPlaca + ", idSensor=" + idActuador + ", timestamp=" + timestamp
+				+ ", activo=" + activo + ", encendido=" + encendido + "]";
 	}
-
+	
+	
+	
 }
