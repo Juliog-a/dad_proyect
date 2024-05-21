@@ -433,7 +433,7 @@ void POST_tests()
   float temperatura = event.temperature;
   dht.humidity().getEvent(&event);
   float humedad = event.relative_humidity;
-  String sensor_value_body = serializeSensorValueBody(10, 1, humedad,millis(), temperatura,4);
+  String sensor_value_body = serializeSensorValueBody(10, 1, humedad,millis(), temperatura,5);
   describe("Test POST sensor with path and body and response");
   String serverPath = serverName + "/api/sensor";
   http.begin(serverPath.c_str());
